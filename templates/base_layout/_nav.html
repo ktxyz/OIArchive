@@ -1,0 +1,64 @@
+{% load i18n %}
+
+<nav class="navbar shadow navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+            aria-controls="mainNavbar" aria-expanded="false" aria-label="{% trans "Toggle navigation" %}">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNavbar">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">{% trans "Problems" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">{% trans "Solutions" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">{% trans "Submitions" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">{% trans "About" %}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">FAQ</a>
+                </li>
+            </ul>
+
+            {% if user.is_authenticated %}
+            <div class="navbar-auth d-flex">
+                <div class="btn-group" style="margin-right: .4rem;">
+                    <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                        <b>{% trans "Submit" %}</b>
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="#">{% trans "Problem" %}</a></li>
+                      <li><a class="dropdown-item" href="#">{% trans "Solution" %}</a></li>
+                      <li><a class="dropdown-item" href="#">{% trans "Submition" %}</a></li>
+                      <li><hr class="dropdown-divider"></li>
+                      <li><a class="dropdown-item" href="#">{% trans "tar" %}</a></li>
+                    </ul>
+                  </div>
+                 <button type="button" style="margin-right: .8rem;" class="btn btn-light btn-auth"><i class="bi bi-bell-fill"></i></button>
+                <button type="button" class="btn btn-primary btn-auth"><i
+                        class="bi bi-person-fill auth-icon"></i><span
+                        class="auth-name">{{ user.username }}</span></button>
+                <button type="button" style="margin-left: .5rem;" class="btn btn-light btn-auth"><i
+                        class="bi bi-gear-fill"></i></button>
+                <button type="button" style="margin-left: .5rem;" class="btn btn-danger btn-auth"><i
+                        class="bi bi-door-closed"></i></button>
+            </div>
+            {% else %}
+            <form id="nav-auth-form">
+                <div class="d-flex">
+                    <input class="form-control me-2" type="text" placeholder="Username" aria-label="{% trans "Username" %}">
+                    <input class="form-control me-2" type="password" placeholder="Password" aria-label="{% trans "Password" %}">
+                    <button class="btn btn-success" type="submit">{% trans "Login" %}</button>
+                </div>
+                <p style="margin-bottom: .5rem; margin-top: 1rem;" class="text-center">{% trans "Don't have an account yet?" %} <a
+                        href="">{% trans "Create one for free" %}.</a></p>
+            </form>
+            {% endif %}
+        </div>
+    </div>
+</nav>

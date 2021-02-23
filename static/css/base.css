@@ -1,0 +1,54 @@
+body {
+    min-height: 100vh;
+}
+
+.jumbotron {
+    padding      : 2rem 1rem;
+    margin-bottom: 2rem;
+    margin-top   : 5rem;
+    border-radius: .3rem;
+}
+
+.navbar-nav {
+    margin-left: 6rem;
+}
+
+.nav-item {
+    font-weight  : bold;
+    font-size    : 1.1rem;
+    margin       : 0 1rem;
+    margin-top   : 4px;
+    border-bottom: 4px solid transparent;
+}
+
+.nav-item:hover {
+    margin-top   : 4px;
+    border-bottom: 4px solid black;
+    box-sizing   : border-box;
+}
+
+.alert-holder {
+    position: absolute;
+    top     : 3rem;
+    left    : calc(50% - min(400px, 45vw));
+    width   : min(800px, 90vw);
+}
+
+.alert {
+    max-width: min(800px, 90vw);
+    margin   : auto;
+}
+
+.btn-close {
+    font-size : .7rem;
+    margin-top: .2rem;
+}
+
+.btn-auth {
+    font-size: 1.1rem;
+}
+
+.auth-name {
+    margin-left: .4rem;
+    font-weight: bold;
+}

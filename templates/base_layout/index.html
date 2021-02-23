@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block main_content %}
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="text-center display-2" style="font-weight: bold;">OIArchive</h1>
+        <h5 class="text-center"> {% trans "The greatest competetive programming problems database in the world" %}</h5>
+        <br>
+        <br>
+        <br>
+        <form action="" style="max-width: 500px; margin: auto;">
+            <div class="d-flex">
+                <input class="form-control me-1" type="search" placeholder="{% trans "Search for topic, algorithm, contest" %}"
+                    aria-label="{% trans "Search" %}">
+            </div>
+            <br>
+            <button class="btn btn-success" style="float: right;" type="submit">{% trans "Search" %}</button>
+            <br>
+            <br>
+
+        </form>
+    </div>
+</div>
+{% endblock main_content %}
