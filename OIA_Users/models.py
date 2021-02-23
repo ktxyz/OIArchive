@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
+from django.utils.translation import ugettext_lazy as _
+
+from django_countries.fields import CountryField
 
 class OIAUserProfile(models.Model):
     """
@@ -9,17 +12,16 @@ class OIAUserProfile(models.Model):
 
     user = models.OneToOneField('OIAUser', on_delete=models.CASCADE, related_name='profile', verbose_name='profile')
 
-    """
-        TODO
-            Change to IntegerChoices to simplify declaring it as unspecified
-    """
-    age = models.IntegerField(default=-1, verbose_name='age')
-    """
-        TODO
-            Change to TextChoices to simply declaring it as unspecified
-    """
-    country = models.CharField(max_length=64, verbose_name="country")
+    country = CountryField(default=None, null=True, verbose_name="country")
+    age = models.IntegerField(default=None, null=True, verbose_name='age')
 
+    AT_STUDENT = 'student'
+    AT_TEACHER = 'teacher'
+    AT_CHOICES = (
+        (AT_STUDENT, _('Student')),
+        (AT_TEACHER, _('Teacher'))
+    )
+    account_type = models.CharField(default=AT_STUDENT, choices=AT_CHOICES, max_length=16)
 
 class OIAUser(AbstractUser):
     """
